@@ -21,6 +21,7 @@ export default function Layout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/workforit.svg" />
         <title>WorkForIt</title>
       </head>
       <body
