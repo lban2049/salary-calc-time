@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/form";
 import { HOURLY_WAGE, SALARY_DATA } from "@/lib/constant";
 import { useToast } from "@/components/ui/use-toast"
+import { useEffect } from "react";
 
 
 const formSchema = z.object({
@@ -46,26 +47,32 @@ const formSchema = z.object({
 export default function PersonalInfoForm() {
   const { toast } = useToast();
 
-  const salaryDataJson = localStorage.getItem(SALARY_DATA);
-  let defaultValues = {
-    monthlySalary: '0',
-    monthlyBonus: '0',
-    dailyWorkHours: '8',
-    weeklyWorkDays: '5',
-    hourlyRate: '0',
-  }
-
-  if (salaryDataJson) {
-    defaultValues = JSON.parse(salaryDataJson);
-  }
-
-
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      ...defaultValues,
+      monthlySalary: '0',
+      monthlyBonus: '0',
+      dailyWorkHours: '8',
+      weeklyWorkDays: '5',
+      hourlyRate: '0',
     },
   });
+
+  useEffect(() => {
+    const salaryDataJson = localStorage.getItem(SALARY_DATA);
+
+    if (salaryDataJson) {
+      const defaultValues = JSON.parse(salaryDataJson);
+
+      form.setValue('monthlySalary', defaultValues.monthlySalary)
+      form.setValue('monthlyBonus', defaultValues.monthlyBonus)
+      form.setValue('dailyWorkHours', defaultValues.dailyWorkHours)
+      form.setValue('weeklyWorkDays', defaultValues.weeklyWorkDays)
+      form.setValue('hourlyRate', defaultValues.hourlyRate)
+    }
+
+  }, [])
+
 
   const onSave = (values) => {
     // Handle form submission
