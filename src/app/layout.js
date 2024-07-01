@@ -1,7 +1,7 @@
 // This is the root layout component for your Next.js app.
 // Learn more: https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
 import { Inter } from "next/font/google";
-import Link from "next/link"
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -47,6 +47,9 @@ export default function Layout({ children }) {
             </nav>
           </header>
           {children}
+          <footer className="bg-muted p-4 md:p-6 text-center text-muted-foreground">
+            <p>&copy; 2024 Acme Inc. All rights reserved.</p>
+          </footer>
         </div>
       </body>
     </html>
@@ -69,5 +72,5 @@ function MountainIcon(props) {
     >
       <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
     </svg>
-  )
+  );
 }

@@ -1,0 +1,1 @@
+export const HOURLY_WAGE = "hourly_wage";
