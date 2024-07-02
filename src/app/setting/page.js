@@ -100,7 +100,7 @@ export default function PersonalInfoForm() {
 
   const calculateHourlyRate = () => {
     const { monthlySalary, monthlyBonus, dailyWorkHours, weeklyWorkDays } = form.getValues();
-    const totalMonthlyIncome = monthlySalary + (monthlyBonus || 0);
+    const totalMonthlyIncome = +monthlySalary + (+(monthlyBonus || 0));
     const monthlyWorkHours = dailyWorkHours * weeklyWorkDays * 4.33; // Assuming 4.33 weeks per month
     const hourlyRate = (totalMonthlyIncome / monthlyWorkHours).toFixed(2);
     form.setValue("hourlyRate", hourlyRate);
