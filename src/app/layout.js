@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react"
 
 const fontHeading = Inter({
   subsets: ["latin"],
@@ -55,6 +56,7 @@ export default function Layout({ children }) {
             <p>&copy; 2024 WorkForIt. All rights reserved.</p>
           </footer>
         </div>
+        <Analytics />
       </body>
     </html>
   );
