@@ -1,10 +1,12 @@
+"use client"
 // This is the root layout component for your Next.js app.
 // Learn more: https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import { useEffect } from "react";
 
 const fontHeading = Inter({
   subsets: ["latin"],
@@ -19,6 +21,20 @@ const fontBody = Inter({
 });
 
 export default function Layout({ children }) {
+  const initGA = () => {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-2Y2GG5XM4B");
+  };
+
+  useEffect(() => {
+    initGA();
+  }, []);
+
   return (
     <html lang="en">
       <head>
@@ -57,14 +73,10 @@ export default function Layout({ children }) {
           </footer>
         </div>
         <Analytics />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Y2GG5XM4B"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-2Y2GG5XM4B');
-        </script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-2Y2GG5XM4B"
+        ></script>
       </body>
     </html>
   );
@@ -107,5 +119,5 @@ function TimerIcon(props) {
       <line x1="12" x2="15" y1="14" y2="11" />
       <circle cx="12" cy="14" r="8" />
     </svg>
-  )
+  );
 }
