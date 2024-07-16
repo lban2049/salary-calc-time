@@ -57,6 +57,14 @@ export default function Layout({ children }) {
           </footer>
         </div>
         <Analytics />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Y2GG5XM4B"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-2Y2GG5XM4B');
+        </script>
       </body>
     </html>
   );
